@@ -1,5 +1,5 @@
 # koa-setincontext
-Middleware for Koa 2 that lets you set properties to the `ctx.state` for every request.
+Flexible middleware for Koa 2 that lets you set properties to the `ctx.state` for every request.
 
 This is particulary useful when you have dynamic properties which value may change on every request.
 
