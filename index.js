@@ -22,7 +22,7 @@ function _setPropertiesToContext(ctx, props, value) {
   }
 
   _props.forEach(prop => {
-    ctx.state[prop.name] = prop.value;
+    ctx[prop.name] = prop.value;
   });
 }
 
@@ -62,7 +62,7 @@ module.exports = function setInContextMiddleware(props, value, app) {
 
   return function setInContext(ctx, next) {
     if (!app) {
-      _setPropertiesToContext(ctx, props, value);
+      _setPropertiesToContext(ctx.state, props, value);
     }
 
     return next();
