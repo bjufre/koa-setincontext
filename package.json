@@ -11,8 +11,12 @@
     "url": "git+https://github.com/behind-design/koa-setincontext.git"
   },
   "keywords": [
-    "Koajs",
-    "middleware"
+    "koa",
+    "koajs",
+    "middleware",
+    "context",
+    "state",
+    "request"
   ],
   "author": "Bernat Jufré",
   "license": "ISC",
