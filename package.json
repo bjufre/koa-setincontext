@@ -1,6 +1,6 @@
 {
   "name": "koa-setincontext",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Middleware for Koa 2, that sets the state of the context i every request, with the values you pass.",
   "main": "index.js",
   "scripts": {
