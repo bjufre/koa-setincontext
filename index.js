@@ -3,30 +3,7 @@
 const Koa = require('koa');
 const isPlainObject = require('lodash.isplainobject');
 
-function _setPropertiesToContext(ctx, props, value) {
-  let _props;
-
-  if (typeof props === 'string') {
-    _props = [{
-      name: props,
-      value: value
-    }];
-  }
-
-  if (isPlainObject(props)) {
-    _props = [props];
-  }
-
-  if (Array.isArray(props)) {
-    _props = props;
-  }
-
-  _props.forEach(prop => {
-    ctx[prop.name] = prop.value;
-  });
-}
-
-module.exports = function setInContextMiddleware(props, value, app) {
+module.exports = function setInContextMiddleware(props, value) {
 
   if (typeof props === 'string' && !value) {
     throw new Error(`When passing a String as 'props', you must pass a value for to set it in the 'ctx.state'.`);
@@ -52,19 +29,31 @@ module.exports = function setInContextMiddleware(props, value, app) {
     `);
   }
 
-  if (app) {
-    if (!(app instanceof Koa)) {
-      throw new Error(`When passing the 'app' argument it must be an instance of Koa.`);
-    }
-
-    _setPropertiesToContext(app.context, props, value);
-  }
-
   return function setInContext(ctx, next) {
-    if (!app) {
-      _setPropertiesToContext(ctx.state, props, value);
-    }
-
+    _setPropertiesToState(ctx.state, props, value);
     return next();
   };
 };
+
+function _setPropertiesToState(state, props, value) {
+  let _props;
+
+  if (typeof props === 'string') {
+    _props = [{
+      name: props,
+      value: value
+    }];
+  }
+
+  if (isPlainObject(props)) {
+    _props = [props];
+  }
+
+  if (Array.isArray(props)) {
+    _props = props;
+  }
+
+  _props.forEach(prop => {
+    state[prop.name] = prop.value;
+  });
+}
