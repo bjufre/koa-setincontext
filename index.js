@@ -56,6 +56,6 @@ function _setPropertiesToState(state, props, value) {
   ctx.state = Object.assign({}, ctx.state, _props);
 
   _props.forEach(prop => {
-    state[prop.name] = prop.value;
+    Object.assign(state, prop);
   });
 }
