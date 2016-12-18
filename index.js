@@ -30,12 +30,12 @@ module.exports = function setInContextMiddleware(props, value) {
   }
 
   return function setInContext(ctx, next) {
-    _setPropertiesToState(ctx.state, props, value);
+    _setPropertiesToState(ctx, props, value);
     return next();
   };
 };
 
-function _setPropertiesToState(state, props, value) {
+function _setPropertiesToState(ctx, props, value) {
   let _props;
 
   if (typeof props === 'string') {
@@ -53,7 +53,5 @@ function _setPropertiesToState(state, props, value) {
     _props = props;
   }
 
-  _props.forEach(prop => {
-    state[prop.name] = prop.value;
-  });
+  ctx.state = Object.assign({}, ctx.state, _props);
 }
