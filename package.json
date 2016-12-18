@@ -1,0 +1,27 @@
+{
+  "name": "koa-setincontext",
+  "version": "1.0.0",
+  "description": "Middleware for Koa 2, that sets the state of the context i every request, with the values you pass.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/behind-design/koa-setincontext.git"
+  },
+  "keywords": [
+    "Koajs",
+    "middleware"
+  ],
+  "author": "Bernat Jufré",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/behind-design/koa-setincontext/issues"
+  },
+  "homepage": "https://github.com/behind-design/koa-setincontext#readme",
+  "dependencies": {
+    "koa": ">= 2.0.0",
+    "lodash.isplainobject": "^4.0.6"
+  }
+}
