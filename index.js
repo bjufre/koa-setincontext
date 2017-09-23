@@ -73,13 +73,9 @@ function setPropertiesIntoState(state, props, value) {
       name: props,
       value: value
     }];
-  }
-
-  if (isPlainObject(props)) {
+  } else if (isPlainObject(props)) {
     _props = [props];
-  }
-
-  if (Array.isArray(props)) {
+  } else if (Array.isArray(props)) {
     _props = props;
   }
 
